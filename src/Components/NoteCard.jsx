@@ -21,8 +21,6 @@ const NoteCard = ({recipient,department,yearLevel,message,track}) => {
 									<p className="text-gray-500 text-xs">{track.artist}</p>
 								</div>
 							</div>
-
-							{/* <p className="text-sm text-gray-500">Album: {track.album}</p> */}
 							<a
 								href={track.url}
 								target="_blank"
