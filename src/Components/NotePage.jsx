@@ -66,11 +66,11 @@ const NotePage = () => {
 				</h1>
 				<p className="handwritten text-4xl text-zinc-500">{note.message}</p>
 				<p className="text-sm text-zinc-500">Sent on {formatDate(note.date)}</p>
-				<div>
+				<div className='flex flex-col gap-4 justify-center items-center mt-4'>
 					<p>Want to send a song to someone?</p>
 					<Link
 						to="/"
-						className="inline-block bg-zinc-900 px-4 py-2 rounded-md text-white text-sm">
+						className="inline-block w-fit bg-zinc-900 px-4 py-2 rounded-md text-white text-sm">
 						Send a note
 					</Link>
 				</div>

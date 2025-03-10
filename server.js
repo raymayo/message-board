@@ -30,13 +30,35 @@ app.post('/notes', async (req,res) => {
 })
 
 
-app.get('/notes', async (req,res) => {
-    try{
-        const message = await Message.find();
-        res.status(200).json(message);
-    }catch (error) {
-        res.status(500).json({error: error.message});
+app.get('/notes', async (req, res) => {
+    try {
+        const { recipient, department, yearLevel, lastId, limit = 10 } = req.query;
+        const searchConditions = [];
+
+        // Apply search filters if provided
+        if (recipient) searchConditions.push({ recipient: { $regex: recipient, $options: "i" } });
+        if (department) searchConditions.push({ department: { $regex: department, $options: "i" } });
+        if (yearLevel) searchConditions.push({ yearLevel: { $regex: yearLevel, $options: "i" } });
+
+        // Construct search query
+        const query = searchConditions.length > 0 ? { $and: searchConditions } : {};
+
+        // Lazy Loading: If lastId is provided, fetch only newer results
+        if (lastId) {
+            query._id = { $lt: lastId }; // Load notes **older** than last loaded note
+        }
+
+        // Fetch notes (lazy load)
+        const notes = await Message.find(query)
+            .sort({ createdAt: -1 }) // Sort by newest first
+            .limit(parseInt(limit, 10)); // Limit results per request
+
+        res.status(200).json(notes);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
     }
-})
+});
+
+
 
 app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
