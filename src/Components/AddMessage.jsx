@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const AddMessage = () => {
 	const [query, setQuery] = useState('');
@@ -19,10 +20,17 @@ const AddMessage = () => {
 		});
 	};
 
-	const logTest = () => {
-		console.log(message);
-	};
-
+	const sendNote = async (e) => {
+		e.preventDefault(); // Prevent form from reloading
+	  
+		try {
+		  const res = await axios.post('http://localhost:5000/notes', message);
+		  console.log('✅ Message Sent:', res.data);
+		} catch (error) {
+		  console.error('❌ Error Sending Message:', error);
+		}
+	  };
+	  
 	//SPOTIFY SEARCH
 
 	const getAccessToken = async () => {
@@ -42,7 +50,9 @@ const AddMessage = () => {
 		return data.access_token;
 	};
 
-	const searchSpotify = async () => {
+	const searchSpotify = async (e) => {
+
+		e.preventDefault();
 		if (!query) return;
 
 		const token = await getAccessToken();
@@ -82,17 +92,16 @@ const AddMessage = () => {
 				},
 			}));
 		}
-		console.log(track);
 	};
 
 	return (
-		<div className="flex flex-col border border-zinc-300 rounded-md shadow-2xs text-left gap-6 p-4 transition-all duration-300">
+		<form onSubmit={sendNote} className="flex flex-col text-left gap-6 p-4 transition-all duration-300 w-2/5">
 			<label className="flex flex-col gap-2">
 				<h1 className="text-sm font-medium">Recipient</h1>
 				<input
 					type="text"
 					placeholder="Enter recipient's name"
-					className="border border-zinc-300 shadow-2xs text-sm rounded-md p-2 w-full focus:outline-none focus:border focus:border-black transition-all duration-300"
+					className="border border-zinc-300 shadow-2xs text-sm rounded-md px-3 py-2 w-full focus:outline-none focus:border focus:border-black transition-all duration-300"
 					onChange={onChange}
 					name="recipient"
 					value={message.recipient}
@@ -102,9 +111,10 @@ const AddMessage = () => {
 			<div className="flex gap-4">
 				<label className="w-full flex flex-col gap-2">
 					<h1 className="text-sm font-medium">Department</h1>
+					<div className="cursor-pointer border border-zinc-300 shadow-2xs text-sm rounded-md w-full focus:border focus-within:border-black transition-all duration-300 pr-2">
 					<select
 						name="department"
-						className="cursor-pointer border border-zinc-300 shadow-2xs text-sm rounded-md p-2 w-full focus:outline-none focus:border focus:border-black transition-all duration-300"
+						className="cursor-pointer text-sm rounded-md px-3 py-2 w-full focus:outline-none"
 						onChange={onChange}
 						value={message.department}
 						required>
@@ -116,12 +126,14 @@ const AddMessage = () => {
 						<option value="EXEC">EXEC</option>
 						<option value="EDUC">EDUC</option>
 					</select>
+					</div>
 				</label>
 				<label className="w-full flex flex-col gap-2">
 					<h1 className="text-sm font-medium">Year Level</h1>
+					<div className="cursor-pointer border border-zinc-300 shadow-2xs text-sm rounded-md w-full focus:border focus-within:border-black transition-all duration-300 pr-2">
 					<select
 						name="yearLevel"
-						className="cursor-pointer border border-zinc-300 shadow-2xs text-sm rounded-md p-2 w-full focus:outline-none focus:border focus:border-black transition-all duration-300"
+						className="cursor-pointer text-sm rounded-md px-3 py-2 w-full focus:outline-none"
 						onChange={onChange}
 						value={message.yearLevel}
 						required>
@@ -133,13 +145,14 @@ const AddMessage = () => {
 						<option value="3rd Year">3rd Year</option>
 						<option value="4th Year">4th Year</option>
 					</select>
+					</div>
 				</label>
 			</div>
 			<label className="w-full flex flex-col gap-2">
 				<h1 className="text-sm font-medium">Message</h1>
 				<textarea
 					name="message"
-					className="border border-zinc-300 shadow-2xs text-sm rounded-md p-2 w-full h-28 focus:outline-none focus:border focus:border-black transition-all duration-300"
+					className="border border-zinc-300 shadow-2xs text-sm rounded-md px-3 py-2 w-full h-36 focus:outline-none focus:border focus:border-black transition-all duration-300"
 					onChange={onChange}
 					value={message.message}
 					placeholder="Write your message here"
@@ -155,6 +168,7 @@ const AddMessage = () => {
 							value={query}
 							onChange={(e) => setQuery(e.target.value)}
 							className="w-full p-2 focus:outline-none"
+							required
 						/>
 						<button
 							onClick={searchSpotify}
@@ -166,7 +180,7 @@ const AddMessage = () => {
 
 				{track && (
 					<div className="flex flex-col items-center gap-4">
-						<div className="flex border border-zinc-200 rounded-md justify-between items-center gap-2 p-3 w-full">
+						<div className="flex justify-between items-center border border-zinc-200 rounded-md gap-2 px-3 py-2 w-full">
 							<div className="flex gap-2">
 								<img
 									src={track.image}
@@ -202,11 +216,11 @@ const AddMessage = () => {
 				)}
 			</div>
 			<button
-				onClick={logTest}
-				className="bg-zinc-900 p-3 text-white rounded-md hover:bg-zinc-800 cursor-pointer transition-all duration-300">
+			type='submit'
+				className="bg-zinc-900 px-3 py-3 text-white rounded-md hover:bg-zinc-800 cursor-pointer transition-all duration-300">
 				Submit
 			</button>
-		</div>
+		</form>
 	);
 };
 
