@@ -95,8 +95,9 @@ const AddMessage = () => {
 	};
 
 	return (
-		<form onSubmit={sendNote} className="flex flex-col text-left gap-6 p-4 transition-all duration-300 w-2/5">
-			<label className="flex flex-col gap-2">
+		<form onSubmit={sendNote} className="flex flex-col justify-center items-center text-left p-4 transition-all duration-300 w-full border border-red-500 h-full">
+			<div className='flex flex-col justify-between items-center w-2/5 gap-6'>
+			<label className="flex flex-col gap-2 w-full">
 				<h1 className="text-sm font-medium">Recipient</h1>
 				<input
 					type="text"
@@ -108,7 +109,7 @@ const AddMessage = () => {
 					required
 				/>
 			</label>
-			<div className="flex gap-4">
+			<div className="flex gap-4 w-full">
 				<label className="w-full flex flex-col gap-2">
 					<h1 className="text-sm font-medium">Department</h1>
 					<div className="cursor-pointer border border-zinc-300 shadow-2xs text-sm rounded-md w-full focus:border focus-within:border-black transition-all duration-300 pr-2">
@@ -128,7 +129,7 @@ const AddMessage = () => {
 					</select>
 					</div>
 				</label>
-				<label className="w-full flex flex-col gap-2">
+				<label className="flex flex-col gap-2 w-full">
 					<h1 className="text-sm font-medium">Year Level</h1>
 					<div className="cursor-pointer border border-zinc-300 shadow-2xs text-sm rounded-md w-full focus:border focus-within:border-black transition-all duration-300 pr-2">
 					<select
@@ -158,7 +159,7 @@ const AddMessage = () => {
 					placeholder="Write your message here"
 					required></textarea>
 			</label>
-			<div className="flex flex-col gap-4">
+			<div className="flex flex-col gap-4 w-full">
 				<label className="w-full flex flex-col gap-2">
 					<h1 className="text-sm font-medium">Song</h1>
 					<div className="flex items-center border border-zinc-300 shadow-2xs text-sm rounded w-full focus-within:border-black transition-all duration-300">
@@ -179,7 +180,7 @@ const AddMessage = () => {
 				</label>
 
 				{track && (
-					<div className="flex flex-col items-center gap-4">
+					<div className="flex flex-col items-center gap-4 w-full">
 						<div className="flex justify-between items-center border border-zinc-200 rounded-md gap-2 px-3 py-2 w-full">
 							<div className="flex gap-2">
 								<img
@@ -217,9 +218,10 @@ const AddMessage = () => {
 			</div>
 			<button
 			type='submit'
-				className="bg-zinc-900 px-3 py-3 text-white rounded-md hover:bg-zinc-800 cursor-pointer transition-all duration-300">
+				className="w-full bg-zinc-900 px-3 py-3 text-white rounded-md hover:bg-zinc-800 cursor-pointer transition-all duration-300">
 				Submit
 			</button>
+			</div>
 		</form>
 	);
 };

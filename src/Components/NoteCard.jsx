@@ -21,9 +21,8 @@ const NoteCard = ({recipient,department,yearLevel,message,track}) => {
 									<p className="text-gray-500 text-xs">{track.artist}</p>
 								</div>
 							</div>
-							<a
-								href={track.url}
-								target="_blank"
+							<div
+								onClick={() => window.open(track.url, "_blank")}
 								rel="noopener noreferrer"
 								className=" flex justify-center items-center h-fit">
 								<img
@@ -31,7 +30,7 @@ const NoteCard = ({recipient,department,yearLevel,message,track}) => {
 									alt="Spotify"
 									className="w-6 h-6"
 								/>
-							</a>
+							</div>
 						</div>
     </div>
   )
