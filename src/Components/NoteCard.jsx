@@ -2,14 +2,14 @@ import React from 'react'
 
 const NoteCard = ({recipient,department,yearLevel,message,track}) => {
   return (
-    <div className='border border-zinc-300 rounded-xl w-2/11 h-56 flex flex-col justify-between'>
+    <div className='border border-zinc-300 rounded-xl w-full h-60 flex flex-col justify-between shadow'>
 
         <div className='px-4 pt-4 flex justify-between'>        
         <h1 className='text-sm text-left'>To: <span className='font-medium'>{recipient}</span></h1>
         <h1 className='text-xs text-left'>{yearLevel} {department}</h1>
         </div>
         <p className='px-4 handwritten text-3xl text-left truncate'>{message}</p>
-        <div className='flex justify-between items-center p-4 w-full h-16 bg-zinc-100 border-t border-zinc-300 rounded-b-xl'>
+        <div className='flex justify-between items-center p-4 w-full h-20 bg-zinc-100 border-t border-zinc-300 rounded-b-xl'>
 							<div className="flex gap-2">
 								<img
 									src={track.image}
