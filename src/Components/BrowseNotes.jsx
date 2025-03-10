@@ -32,7 +32,7 @@ const BrowseNotes = () => {
 
 
   return (
-<div className='w-4/10 grid justify-center gap-6 grid-cols-2 p-6'>
+<div className='w-4/10 grid justify-center gap-6 grid-cols-2 p-6 py-20'>
  {notes.map((note) => (
     <NoteCard key={note._id} {...note} />
   ))}

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer className='py-4 border-t border-zinc-300 w-full mt-8'>
+    <footer className='py-4 border-t border-zinc-300 w-full mt-8 fixed bottom-0 bg-white'>
         <h1>Based on <a href="https://sendthesong.xyz/" className='text-blue-500'>sendthesong.xyz</a></h1>
 
         </footer>
