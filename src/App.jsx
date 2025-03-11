@@ -11,7 +11,7 @@ import './App.css'
 function App() {
 
   return (
-    <div className='bg-white w-screen h-screen flex flex-col justify-between items-center'>
+    <div className='bg-white w-screen h-screen flex flex-col justify-between items-center overflow-x-hidden'>
     <Header />
     <Routes>
       <Route path="/" element={<AddMessage />}/>
@@ -21,7 +21,7 @@ function App() {
     <AddMessage />
     </div> */}
     </Routes>
-    <Footer/>
+    {/* <Footer/> */}
     </div>
   )
 }
