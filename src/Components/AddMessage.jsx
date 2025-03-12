@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import SelectButton from './SelectButton.jsx';
-import dotenv from 'dotenv';
-dotenv.config();
 
 const AddMessage = () => {
 	const [query, setQuery] = useState('');
@@ -32,23 +30,23 @@ const AddMessage = () => {
 	
 	  
 
-	const sendNote = async (e) => {
-		e.preventDefault(); // Prevent form from reloading
-	
-		try {
-			const res = await axios.post(`${import.meta.env.VITE_API_URL}/notes`, message);
-			console.log('✅ Message Sent:', res.data);
-		} catch (error) {
-			console.error('❌ Error Sending Message:', error);
-		}
-	};
-	
+const sendNote = async (e) => {
+	e.preventDefault(); // Prevent form from reloading
+
+	try {
+		const res = await axios.post(`${import.meta.env.VITE_API_URL}/notes`, message);
+		console.log('✅ Message Sent:', res.data);
+	} catch (error) {
+		console.error('❌ Error Sending Message:', error);
+	}
+};
+
 
 	//SPOTIFY SEARCH
 
 	const getAccessToken = async () => {
-		const clientId = process.env.VITE_SPOTIFY_CLIENT_ID;
-		const clientSecret = process.env.VITE_SPOTIFY_CLIENT_SECRET;
+		const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
+		const clientSecret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET;
 
 		const response = await fetch('https://accounts.spotify.com/api/token', {
 			method: 'POST',
