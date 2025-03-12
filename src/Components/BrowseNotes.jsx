@@ -43,7 +43,7 @@ const BrowseNotes = () => {
 
 	return (
 		<div
-			className="flex flex-col justify-start  text-left p-4 transition-all duration-300 w-full h-full">
+			className="flex flex-col justify-start  text-left p-4 transition-all duration-300 w-full h-full mb-16">
 				<div className="grid w-full max-w-[725px] gap-6 md:grid-cols-2 items-center mx-auto">
 			<div className="flex flex-col gap-2 w-full mb-4 md:col-span-2">
 						<h1 className="text-sm font-medium text-left">Filter</h1>

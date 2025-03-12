@@ -24,7 +24,7 @@ const NoteCard = ({recipient,department,yearLevel,message,track}) => {
 							<div
 								onClick={() => window.open(track.url, "_blank")}
 								rel="noopener noreferrer"
-								className=" flex justify-center items-center h-fit">
+								className=" flex justify-center items-center h-fit cursor-pointer">
 								<img
 									src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Black.png"
 									alt="Spotify"
