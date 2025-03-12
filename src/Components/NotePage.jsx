@@ -44,7 +44,7 @@ const NotePage = () => {
 	}
 
 	return (
-		<div className="flex flex-col justify-center items-center w-full h-full border border-red-500">
+		<div className="flex flex-col justify-center items-center w-full h-full">
 			<div className="max-w-md flex flex-col items-center gap-4">
 				<h1 className="text-xl">
 					Hello, <span className="handwritten text-3xl">{note.recipient}</span>

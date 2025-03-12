@@ -227,11 +227,21 @@ const AddMessage = () => {
 				<button
 					type="submit"
 					className={`w-full px-3 py-3 text-sm text-white rounded-md transition-all duration-300 ${
-						track
+						message.recipient &&
+						message.department &&
+						message.yearLevel &&
+						message.message &&
+						Object.keys(message.track).length > 0
 							? 'bg-zinc-900 hover:bg-zinc-800 cursor-pointer'
 							: 'bg-zinc-400 cursor-not-allowed'
 					}`}
-					disabled={!track}>
+					disabled={
+						!message.recipient ||
+						!message.department ||
+						!message.yearLevel ||
+						!message.message ||
+						Object.keys(message.track).length === 0
+					}>
 					Submit
 				</button>
 			</div>

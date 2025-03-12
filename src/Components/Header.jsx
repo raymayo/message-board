@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <nav className='py-2 border-b border-zinc-300 w-full mb-8 fixed top-0 left-0 bg-white flex justify-center items-center'>
+    <nav className='py-2 border-b border-zinc-300 w-full mb-8 sticky top-0 left-0 bg-white flex justify-center items-center'>
       <div className='w-full sm:w-4/5 md:w-4/5 lg:w-3/5 xl:w-3/5 2xl:w-3/5 flex justify-between items-center px-4'>
         <h1 className='handwritten text-2xl'>KNS Message Board</h1>
         <div>
