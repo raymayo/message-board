@@ -7,6 +7,7 @@ import BrowseNotes from "./Components/BrowseNotes.jsx";
 import NotePage from "./Components/NotePage.jsx";
 import Home from "./Components/Home.jsx";
 import Success from "./Components/Success.jsx";
+import { Analytics } from "@vercel/analytics/react"
 
 import './App.css'
 
@@ -14,6 +15,7 @@ function App() {
 
   return (
     <div className='bg-white w-screen h-screen flex flex-col justify-between items-center overflow-x-hidden'>
+      <Analytics/>
     <Header />
     <Routes>
       <Route path="/" element={<Home />}/>
