@@ -4,7 +4,7 @@ import { PencilLine, Search } from 'lucide-react';
 
 const Home = () => {
     return (
-        <div className="flex flex-col justify-center items-center w-full h-full px-4 text-center gap-6">
+        <div className="flex flex-col justify-center items-center w-full h-full px-4 text-center gap-6 pt-10">
             <h1 className="handwritten text-4xl md:text-6xl max-w-[90%] md:max-w-3xl">
                 a collection of unspoken words, conveyed through the song
             </h1>
@@ -25,7 +25,7 @@ const Home = () => {
                     Browse Notes <Search size={20} />
                 </Link>
             </div>
-            <div className="flex flex-col md:flex-row gap-6 w-full max-w-5xl mt-6 2xl:mt-16">
+            <div className="flex flex-col md:flex-row gap-4 w-full max-w-5xl 2xl:mt-16">
                 {[
                     {
                         title: "Share Your Notes",

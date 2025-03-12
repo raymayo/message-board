@@ -44,15 +44,16 @@ const BrowseNotes = () => {
 
 	return (
 		<div
-			className="pt-16 w-full mx-auto flex flex-col justify-center min-h-full gap-6 p-6 sm:grid sm:grid-cols-2  md:grid md:grid-cols-2  lg:w-4/5  2xl:w-2/5 2xl:grid 2xl:grid-cols-2">
-			<div className="flex flex-col gap-4 w-full col-span-2 mb-4">
-				<div className="flex gap-4 text-left">
+			className="flex flex-col justify-start  text-left p-4 transition-all duration-300 w-full h-full">
+				<div className="grid w-full max-w-[725px] gap-6 md:grid-cols-2 items-center mx-auto">
+			<div className="flex flex-col gap-2 w-full mb-4 md:col-span-2">
+						<h1 className="text-sm font-medium text-left">Filter</h1>
+				<div className="flex gap-2 text-left flex-col md:flex-row">
 					<label className="flex flex-col gap-2 w-full">
-						<h1 className="text-sm font-medium">Recipient</h1>
 						<input
 							type="text"
 							placeholder="Enter recipient's name"
-							className="border border-zinc-300 shadow-2xs text-sm rounded-md px-3 py-2 w-full focus:outline-none focus:border focus:border-black transition-all duration-300"
+							className="border border-zinc-300 shadow-2xs text-sm rounded-md h-full px-3 py-2 w-full focus:outline-none focus:border focus:border-black transition-all duration-300"
 							onChange={(e) =>
 								setFilters({ ...filters, recipient: e.target.value })
 							}
@@ -61,8 +62,8 @@ const BrowseNotes = () => {
 							required
 						/>
 					</label>
+					<div className='flex w-full items-center gap-2'>
 					<label className="w-full flex flex-col gap-2">
-						<h1 className="text-sm font-medium">Department</h1>
 						<SelectButton
 							options={['CSD', 'HM', 'EXEC', 'EDUC']}
 							value={filters.department}
@@ -71,7 +72,6 @@ const BrowseNotes = () => {
 						/>
 					</label>
 					<label className="flex flex-col gap-2 w-full">
-						<h1 className="text-sm font-medium">Year Level</h1>
 						<SelectButton
 							options={['1st Year', '2nd Year', '3rd Year', '4th Year']}
 							value={filters.yearLevel}
@@ -79,6 +79,7 @@ const BrowseNotes = () => {
 							placeholder="Select Year Level"
 						/>
 					</label>
+					</div>
 				</div>
 				<button
 					onClick={fetchFilteredNotes}
@@ -88,13 +89,14 @@ const BrowseNotes = () => {
 			</div>
 			{notes.length > 0 ? (
 				notes.map((note) => (
-					<Link to={`/notes/${note._id}`} key={note._id}>
+					<Link to={`/notes/${note._id}`} key={note._id} className='w-full'>
 						<NoteCard {...note} />
 					</Link>
 				))
 			) : (
 				<p className='text-center col-span-2'>No notes found.</p>
 			)}
+			</div>
 		</div>
 	);
 };
