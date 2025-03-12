@@ -32,14 +32,15 @@ const AddMessage = () => {
 
 	const sendNote = async (e) => {
 		e.preventDefault(); // Prevent form from reloading
-
+	
 		try {
-			const res = await axios.post('http://localhost:5000/notes', message);
+			const res = await axios.post(`${import.meta.env.VITE_API_URL}/notes`, message);
 			console.log('✅ Message Sent:', res.data);
 		} catch (error) {
 			console.error('❌ Error Sending Message:', error);
 		}
 	};
+	
 
 	//SPOTIFY SEARCH
 

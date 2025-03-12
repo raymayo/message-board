@@ -18,7 +18,7 @@ const BrowseNotes = () => {
 
 	const fetchFilteredNotes = async () => {
 		try {
-			const response = await axios.get('http://localhost:5000/notes', {
+			const response = await axios.get(`${import.meta.env.VITE_API_URL}/notes`, {
 				params: filters,
 			});
 			setNotes(response.data);
@@ -28,7 +28,7 @@ const BrowseNotes = () => {
 			setLoading(false);
 		}
 	};
-
+	
 	useEffect(() => {
 		fetchFilteredNotes();
 	}, []);
