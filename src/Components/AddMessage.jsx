@@ -52,7 +52,7 @@ const AddMessage = () => {
 
 			setQuery('');
 			setTrack(null);
-			navigate("/browse");
+			navigate("/success");
 			
 
 		} catch (error) {
