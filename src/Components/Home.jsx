@@ -4,28 +4,28 @@ import { PencilLine, Search } from 'lucide-react';
 
 const Home = () => {
     return (
-        <div className="flex flex-col justify-center items-center w-full min-h-screen px-4 text-center gap-6">
+        <div className="flex flex-col justify-center items-center w-full min-h-screen px-4 text-center gap-6 pt-16 lg:pt-0 2xl:pt-0">
             <h1 className="handwritten text-4xl md:text-6xl max-w-[90%] md:max-w-3xl">
                 a collection of unspoken words, conveyed through the song
             </h1>
             <p className="text-zinc-500 text-base md:text-lg">
                 Express your untold note through the song.
             </p>
-            <div className="flex flex-col md:flex-row gap-4 w-full max-w-md md:max-w-none justify-center items-center">
+            <div className="flex flex-col md:flex-row gap-2 w-full max-w-md md:max-w-none justify-center items-center">
                 <Link
                     to="/create"
-                    className="bg-zinc-900 text-zinc-50 px-6 h-12 cursor-pointer font-medium rounded-md shadow-sm flex items-center justify-center gap-2 w-full md:w-auto"
+                    className="text-sm bg-zinc-900 text-zinc-50 px-6 h-10 cursor-pointer font-medium rounded-md shadow-sm flex items-center justify-center gap-2 w-full md:w-auto"
                 >
                     Write your feelings <PencilLine size={20} />
                 </Link>
                 <Link
                     to="/browse"
-                    className="border border-zinc-300 px-6 h-12 cursor-pointer font-medium rounded-md shadow-sm flex items-center justify-center gap-2 w-full md:w-auto"
+                    className="text-sm border border-zinc-300 px-6 h-10 cursor-pointer font-medium rounded-md shadow-sm flex items-center justify-center gap-2 w-full md:w-auto"
                 >
                     Browse Notes <Search size={20} />
                 </Link>
             </div>
-            <div className="flex flex-col md:flex-row gap-6 w-full max-w-5xl mt-16">
+            <div className="flex flex-col md:flex-row gap-6 w-full max-w-5xl mt-6 2xl:mt-16">
                 {[
                     {
                         title: "Share Your Notes",
