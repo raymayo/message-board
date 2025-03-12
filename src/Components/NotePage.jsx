@@ -35,7 +35,6 @@ const NotePage = () => {
 	if (loading) return <p>Loading notes...</p>;
 	if (error) return <p className="text-red-500">Error: {error}</p>;
 
-	console.log(notes);
 
 	const note = notes.find((n) => n._id === id);
 
