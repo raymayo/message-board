@@ -27,32 +27,31 @@ const AddMessage = () => {
 			[name]: value,
 		}));
 	};
-	
-	  
 
-const sendNote = async (e) => {
-	e.preventDefault(); // Prevent form from reloading
+	const sendNote = async (e) => {
+		e.preventDefault(); // Prevent form from reloading
 
-	try {
-		const res = await axios.post(`${import.meta.env.VITE_API_URL}/notes`, message);
-		console.log('✅ Message Sent:', res.data);
+		try {
+			const res = await axios.post(
+				`${import.meta.env.VITE_API_URL}/notes`,
+				message
+			);
+			console.log('✅ Message Sent:', res.data);
 
-		setMessage({
-			recipient: '',
-			department: '',
-			yearLevel: '',
-			message: '',
-			track: {},
-		});
+			setMessage({
+				recipient: '',
+				department: '',
+				yearLevel: '',
+				message: '',
+				track: {},
+			});
 
-		setQuery('');
-		setTrack(null);
-		
-	} catch (error) {
-		console.error('❌ Error Sending Message:', error);
-	}
-};
-
+			setQuery('');
+			setTrack(null);
+		} catch (error) {
+			console.error('❌ Error Sending Message:', error);
+		}
+	};
 
 	//SPOTIFY SEARCH
 
@@ -120,14 +119,14 @@ const sendNote = async (e) => {
 		<form
 			onSubmit={sendNote}
 			className="flex flex-col justify-center items-center text-left p-4 transition-all duration-300 w-full h-full">
-			<div className="flex flex-col justify-between items-center w-full max-w-[500px] gap-6">
+			<div className="flex flex-col justify-between items-center w-full max-w-[725px] gap-6">
 				{/* Recipient Field */}
 				<label className="flex flex-col gap-2 w-full">
 					<h1 className="text-sm font-medium">Recipient</h1>
 					<input
 						type="text"
 						placeholder="Enter recipient's name"
-						className="border border-zinc-300 shadow-sm text-sm rounded-md px-3 py-2 w-full focus:outline-none focus:border focus:border-black transition-all duration-300"
+						className="border border-zinc-300 shadow-sm text-sm rounded-md px-3 py-2 w-full focus:outline-none focus:border focus:border-zinc-500 transition-all duration-300"
 						onChange={onChange}
 						name="recipient"
 						value={message.recipient}
@@ -143,7 +142,7 @@ const sendNote = async (e) => {
 						<SelectButton
 							options={['CSD', 'HM', 'EXEC', 'EDUC']}
 							value={message.department}
-							onChange={(value) => onSelectChange("department", value)}
+							onChange={(value) => onSelectChange('department', value)}
 							placeholder="Select Department"
 						/>
 					</label>
@@ -154,7 +153,7 @@ const sendNote = async (e) => {
 						<SelectButton
 							options={['1st Year', '2nd Year', '3rd Year', '4th Year']}
 							value={message.yearLevel}
-							onChange={(value) => onSelectChange("yearLevel", value)}
+							onChange={(value) => onSelectChange('yearLevel', value)}
 							placeholder="Select Year Level"
 						/>
 					</label>
@@ -165,7 +164,7 @@ const sendNote = async (e) => {
 					<h1 className="text-sm font-medium">Message</h1>
 					<textarea
 						name="message"
-						className="border border-zinc-300 shadow-sm text-sm rounded-md px-3 py-2 w-full h-36 focus:outline-none focus:border focus:border-black transition-all duration-300"
+						className="border border-zinc-300 shadow-sm text-sm rounded-md px-3 py-2 w-full h-36 focus:outline-none focus:border focus:border-zinc-500 transition-all duration-300"
 						onChange={onChange}
 						value={message.message}
 						placeholder="Write your message here"
@@ -176,19 +175,19 @@ const sendNote = async (e) => {
 				<div className="flex flex-col gap-4 w-full">
 					<label className="w-full flex flex-col gap-2">
 						<h1 className="text-sm font-medium">Song</h1>
-						<div className="flex items-center border border-zinc-300 shadow-sm text-sm rounded w-full focus-within:border-black transition-all duration-300">
+						<div className="flex items-center border border-zinc-300 shadow-sm text-sm rounded w-full focus-within:border-zinc-500 transition-all duration-300">
 							<input
 								type="text"
 								placeholder="Search and select your song"
 								value={query}
 								onChange={(e) => setQuery(e.target.value)}
-								className="w-full p-2 focus:outline-none"
+								className="w-full p-2 focus:outline-none "
 								required
 							/>
 							<button
 								onClick={searchSpotify}
-								className="p-2 cursor-pointer border-l border-zinc-300 rounded-r hover:bg-zinc-100 transition-all duration-300">
-								Select
+								className="w-32 p-2 cursor-pointer border-l border-zinc-300 rounded-r text-sm hover:bg-zinc-200 transition-all duration-300">
+								Add Song
 							</button>
 						</div>
 					</label>
@@ -196,7 +195,7 @@ const sendNote = async (e) => {
 					{/* Selected Song Display */}
 					{track && (
 						<div className="flex flex-col items-center gap-4 w-full">
-							<div className="flex flex-col sm:flex-row justify-between items-center border border-zinc-200 rounded-md gap-2 px-3 py-2 w-full">
+							<div className="flex flex-row justify-between items-center border border-zinc-200 rounded-md gap-2 px-3 py-2 w-full">
 								<div className="flex gap-2">
 									<img
 										src={track.image}
@@ -227,7 +226,12 @@ const sendNote = async (e) => {
 				{/* Submit Button */}
 				<button
 					type="submit"
-					className="w-full bg-zinc-900 px-3 py-3 text-white rounded-md hover:bg-zinc-800 cursor-pointer transition-all duration-300">
+					className={`w-full px-3 py-3 text-sm text-white rounded-md transition-all duration-300 ${
+						track
+							? 'bg-zinc-900 hover:bg-zinc-800 cursor-pointer'
+							: 'bg-zinc-400 cursor-not-allowed'
+					}`}
+					disabled={!track}>
 					Submit
 				</button>
 			</div>
