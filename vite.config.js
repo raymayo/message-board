@@ -9,7 +9,7 @@ export default defineConfig({
     historyApiFallback: true,
     proxy: {
       "/api": {
-        target: "https://message-board-g0z0.onrender.com",
+        target: "https://kns-confession.onrender.com",
         changeOrigin: true,
         secure: false,
       },

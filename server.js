@@ -12,7 +12,7 @@ const app = express();
 const PORT =  process.env.PORT || 5000;
 
 app.use(express.json());
-app.use(cors({origin:'https://kns-message-board.vercel.app',
+app.use(cors({origin:'https://kns-confession.vercel.app',
   credentials: true,
 }));
 // import.meta.env.VITE_PORT ||
