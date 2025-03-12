@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import SelectButton from './SelectButton.jsx';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const AddMessage = () => {
 	const [query, setQuery] = useState('');
@@ -45,8 +47,8 @@ const AddMessage = () => {
 	//SPOTIFY SEARCH
 
 	const getAccessToken = async () => {
-		const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
-		const clientSecret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET;
+		const clientId = process.env.VITE_SPOTIFY_CLIENT_ID;
+		const clientSecret = process.env.VITE_SPOTIFY_CLIENT_SECRET;
 
 		const response = await fetch('https://accounts.spotify.com/api/token', {
 			method: 'POST',
