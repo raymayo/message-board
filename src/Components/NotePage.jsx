@@ -65,7 +65,7 @@ const NotePage = () => {
 					Also, here's a message from the sender:
 				</h1>
 				<p className="handwritten text-4xl text-zinc-500">{note.message}</p>
-				<p className="text-sm text-zinc-500">Sent on {formatDate(note.date)}</p>
+				<p className="text-sm text-zinc-500">Sent on {formatDate(note.createdAt)}</p>
 				<div className='flex flex-col gap-4 justify-center items-center mt-4'>
 					<p>Want to send a song to someone?</p>
 					<Link

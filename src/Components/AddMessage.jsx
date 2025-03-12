@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import SelectButton from './SelectButton.jsx';
+import { useNavigate } from "react-router-dom";
 
 const AddMessage = () => {
 	const [query, setQuery] = useState('');
@@ -13,6 +14,9 @@ const AddMessage = () => {
 		message: '',
 		track: {},
 	});
+
+	const navigate = useNavigate();
+
 
 	const onChange = (e) => {
 		setMessage({
@@ -48,6 +52,9 @@ const AddMessage = () => {
 
 			setQuery('');
 			setTrack(null);
+			navigate("/browse");
+			
+
 		} catch (error) {
 			console.error('❌ Error Sending Message:', error);
 		}
@@ -178,7 +185,7 @@ const AddMessage = () => {
 						<div className="flex items-center border border-zinc-300 shadow-sm text-sm rounded w-full focus-within:border-zinc-500 transition-all duration-300">
 							<input
 								type="text"
-								placeholder="Search and select your song"
+								placeholder="Type the song for this note"
 								value={query}
 								onChange={(e) => setQuery(e.target.value)}
 								className="w-full p-2 focus:outline-none "

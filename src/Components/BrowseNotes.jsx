@@ -3,6 +3,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import NoteCard from './NoteCard.jsx';
+import SelectButton from './SelectButton.jsx';
 import { Link } from 'react-router-dom';
 
 const BrowseNotes = () => {
@@ -18,9 +19,12 @@ const BrowseNotes = () => {
 
 	const fetchFilteredNotes = async () => {
 		try {
-			const response = await axios.get(`${import.meta.env.VITE_API_URL}/notes`, {
-				params: filters,
-			});
+			const response = await axios.get(
+				`${import.meta.env.VITE_API_URL}/notes`,
+				{
+					params: filters,
+				}
+			);
 			setNotes(response.data);
 		} catch (error) {
 			setError(error);
@@ -28,7 +32,7 @@ const BrowseNotes = () => {
 			setLoading(false);
 		}
 	};
-	
+
 	useEffect(() => {
 		fetchFilteredNotes();
 	}, []);
@@ -39,71 +43,42 @@ const BrowseNotes = () => {
 	console.log(notes);
 
 	return (
-		<div className="
-  w-full mx-auto flex flex-col justify-center gap-6 py-20 p-6
-  sm:grid sm:grid-cols-2 
-  md:grid md:grid-cols-2 
-  lg:w-4/5 
-  2xl:w-2/5 2xl:grid 2xl:grid-cols-2
-">
+		<div
+			className="pt-16 w-full mx-auto flex flex-col justify-center min-h-full gap-6 p-6 sm:grid sm:grid-cols-2  md:grid md:grid-cols-2  lg:w-4/5  2xl:w-2/5 2xl:grid 2xl:grid-cols-2">
 			<div className="flex flex-col gap-4 w-full col-span-2 mb-4">
-				<div className='flex gap-4 text-left'>
-				<label className="flex flex-col gap-2 w-full">
-					<h1 className="text-sm font-medium">Recipient</h1>
-					<input
-						type="text"
-						placeholder="Enter recipient's name"
-						className="border border-zinc-300 shadow-2xs text-sm rounded-md px-3 py-2 w-full focus:outline-none focus:border focus:border-black transition-all duration-300"
-						onChange={(e) =>
-							setFilters({ ...filters, recipient: e.target.value })
-						}
-						name="recipient"
-						value={filters.recipient}
-						required
-					/>
-				</label>
-				<label className="w-full flex flex-col gap-2">
-					<h1 className="text-sm font-medium">Department</h1>
-					<div className="cursor-pointer border border-zinc-300 shadow-2xs text-sm rounded-md w-full focus:border focus-within:border-black transition-all duration-300 pr-2">
-						<select
-							name="department"
-							className="cursor-pointer text-sm rounded-md px-3 py-2 w-full focus:outline-none"
+				<div className="flex gap-4 text-left">
+					<label className="flex flex-col gap-2 w-full">
+						<h1 className="text-sm font-medium">Recipient</h1>
+						<input
+							type="text"
+							placeholder="Enter recipient's name"
+							className="border border-zinc-300 shadow-2xs text-sm rounded-md px-3 py-2 w-full focus:outline-none focus:border focus:border-black transition-all duration-300"
 							onChange={(e) =>
-								setFilters({ ...filters, department: e.target.value })
+								setFilters({ ...filters, recipient: e.target.value })
 							}
+							name="recipient"
+							value={filters.recipient}
+							required
+						/>
+					</label>
+					<label className="w-full flex flex-col gap-2">
+						<h1 className="text-sm font-medium">Department</h1>
+						<SelectButton
+							options={['CSD', 'HM', 'EXEC', 'EDUC']}
 							value={filters.department}
-							required>
-							<option value="" disabled>
-								Select Department
-							</option>
-							<option value="CSD">CSD</option>
-							<option value="HM">HM</option>
-							<option value="EXEC">EXEC</option>
-							<option value="EDUC">EDUC</option>
-						</select>
-					</div>
-				</label>
-				<label className="flex flex-col gap-2 w-full">
-					<h1 className="text-sm font-medium">Year Level</h1>
-					<div className="cursor-pointer border border-zinc-300 shadow-2xs text-sm rounded-md w-full focus:border focus-within:border-black transition-all duration-300 pr-2">
-						<select
-							name="yearLevel"
-							className="cursor-pointer text-sm rounded-md px-3 py-2 w-full focus:outline-none"
-							onChange={(e) =>
-								setFilters({ ...filters, yearLevel: e.target.value })
-							}
+							onChange={(selectedOption) => setFilters({ ...filters, department: selectedOption })}
+							placeholder="Select Department"
+						/>
+					</label>
+					<label className="flex flex-col gap-2 w-full">
+						<h1 className="text-sm font-medium">Year Level</h1>
+						<SelectButton
+							options={['1st Year', '2nd Year', '3rd Year', '4th Year']}
 							value={filters.yearLevel}
-							required>
-							<option value="" disabled>
-								Select Department
-							</option>
-							<option value="1st Year">1st Year</option>
-							<option value="2nd Year">2nd Year</option>
-							<option value="3rd Year">3rd Year</option>
-							<option value="4th Year">4th Year</option>
-						</select>
-					</div>
-				</label>
+							onChange={(selectedOption) => setFilters({ ...filters, yearLevel: selectedOption })}
+							placeholder="Select Year Level"
+						/>
+					</label>
 				</div>
 				<button
 					onClick={fetchFilteredNotes}
@@ -118,7 +93,7 @@ const BrowseNotes = () => {
 					</Link>
 				))
 			) : (
-				<p>No notes found.</p>
+				<p className='text-center col-span-2'>No notes found.</p>
 			)}
 		</div>
 	);

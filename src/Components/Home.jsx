@@ -4,7 +4,7 @@ import { PencilLine, Search } from 'lucide-react';
 
 const Home = () => {
     return (
-        <div className="flex flex-col justify-center items-center w-full min-h-screen px-4 text-center gap-6 pt-16 lg:pt-0 2xl:pt-0">
+        <div className="flex flex-col justify-center items-center w-full h-full px-4 text-center gap-6">
             <h1 className="handwritten text-4xl md:text-6xl max-w-[90%] md:max-w-3xl">
                 a collection of unspoken words, conveyed through the song
             </h1>

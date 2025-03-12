@@ -2,7 +2,7 @@ import React from 'react'
 
 const NoteCard = ({recipient,department,yearLevel,message,track}) => {
   return (
-    <div className='bg-white border border-zinc-300 rounded-xl w-full h-60 flex flex-col justify-between shadow cursor-pointer hover:border-zinc-500 transition-all duration-300'>
+    <div className='bg-white border border-zinc-300 rounded-xl w-full h-60 flex flex-col justify-between shadow cursor-pointer hover:border-zinc-400 hover:bg-zinc-100 transition-all duration-300'>
 
         <div className='px-4 pt-4 flex justify-between'>        
         <h1 className='text-sm text-left'>To: <span className='font-medium'>{recipient}</span></h1>

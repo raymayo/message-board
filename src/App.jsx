@@ -6,6 +6,7 @@ import Footer from './Components/Footer.jsx'
 import BrowseNotes from "./Components/BrowseNotes.jsx";
 import NotePage from "./Components/NotePage.jsx";
 import Home from "./Components/Home.jsx";
+import Success from "./Components/Success.jsx";
 
 import './App.css'
 
@@ -19,11 +20,12 @@ function App() {
       <Route path="/create" element={<AddMessage />}/>
       <Route path="/browse" element={<BrowseNotes/>}/>
       <Route path="/notes/:id" element={<NotePage/>}/>
+      <Route path="/success" element={<Success/>}/>
       {/* <div className='w-2/5'>
     <AddMessage />
     </div> */}
     </Routes>
-    {/* <Footer/> */}
+    <Footer/>
     </div>
   )
 }
