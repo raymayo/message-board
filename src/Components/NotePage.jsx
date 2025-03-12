@@ -21,7 +21,7 @@ const NotePage = () => {
 	useEffect(() => {
 		const fetchNotes = async () => {
 			try {
-				const response = await axios.get('http://localhost:5000/notes');
+				const response = await axios.get(`${import.meta.env.VITE_API_URL}/notes`);
 				setNotes(response.data);
 			} catch (error) {
 				setError(error);
