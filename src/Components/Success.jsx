@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Success = () => {
 	return (
-		<div className="w-full h-full flex flex-col justify-center items-center gap-16">
+		<div className="w-full h-full flex flex-col justify-center items-center gap-12 md:gap-16 p-6">
 			<div class="success-animation">
 				<svg
 					class="checkmark"
