@@ -36,6 +36,18 @@ const sendNote = async (e) => {
 	try {
 		const res = await axios.post(`${import.meta.env.VITE_API_URL}/notes`, message);
 		console.log('✅ Message Sent:', res.data);
+
+		setMessage({
+			recipient: '',
+			department: '',
+			yearLevel: '',
+			message: '',
+			track: {},
+		});
+
+		setQuery('');
+		setTrack(null);
+		
 	} catch (error) {
 		console.error('❌ Error Sending Message:', error);
 	}
